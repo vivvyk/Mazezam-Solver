@@ -10,7 +10,7 @@ m.gpos = (2,7)
 def BFS(start):
     '''
     Breadth-First Search
-    Utilizes the frontier as a priority queue.
+    Utilizes the frontier as a queue.
     '''
     frontier = []
     frontier.append([start])
