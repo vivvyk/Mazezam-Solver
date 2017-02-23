@@ -19,11 +19,10 @@ def read(level):
         if item == '#' * len(item):
             split.pop(index)
     split.pop(-1)
-
+    
     cutIndex1 = 0
     cutIndex2 = 0
     levelMatrix = []
-
     for row in split:
         matrow = []
         for (index,character) in enumerate(row):
@@ -37,7 +36,6 @@ def read(level):
             else:
                 pass
         levelMatrix.append(matrow)
-
     goal_Row = 1 #Marks row of goal position
     for row in levelMatrix:
         goal_Column = 0 #Marks column of goal position
