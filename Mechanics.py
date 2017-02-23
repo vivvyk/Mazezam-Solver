@@ -23,6 +23,7 @@ def read(level):
     cutIndex1 = 0
     cutIndex2 = 0
     levelMatrix = []
+
     for row in split:
         matrow = []
         for (index,character) in enumerate(row):
@@ -37,20 +38,35 @@ def read(level):
                 pass
         levelMatrix.append(matrow)
 
+    goal_Row = 1 #Marks row of goal position
     for row in levelMatrix:
+        goal_Column = 0 #Marks column of goal position
         for (index, character) in enumerate(row):
             if character == "+":
                 row[index+1] = 2
+                goal_Column += 1
             if character == ".":
                 row[index] = 0
+                goal_Column += 1
             if character == "L" or character == "R" or character == "C":
                 row[index] = 1
+                goal_Column += 1
+            if character == "*":
+                goal_Pos = (goal_Row,goal_Column)
+        goal_Row += 1
 
     state = []
     for i in range(len(levelMatrix)):
         state.append(levelMatrix[i][cutIndex1+1:cutIndex2])
 
-    return np.array(state)
+    final_state = np.array(state)
+    return (final_state, goal_Pos)
+
+def matrix_shape(matrix):
+    '''
+    Returns column and row number of matrix.
+    '''
+    return (matrix.shape[0],matrix.shape[1])
 
 def down(matrix_representation, LCFS=False):
     '''
