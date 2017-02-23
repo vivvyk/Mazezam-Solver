@@ -2,11 +2,6 @@ __author__ = "Vivek Kumar"
 import Mechanics as m
 import numpy as np
 
-m.column_number = 7
-m.row_number = 3
-
-m.gpos = (2,7)
-
 def BFS(start):
     '''
     Breadth-First Search
@@ -169,8 +164,14 @@ if __name__ == "__main__":
     #Prints the level
     print "\nVERTEX"
     level = open("Level.txt",'r') #PATH TO FILE
-    lev3 = m.read(level)
+    (lev3,goal) = m.read(level)
     print lev3
+
+
+    #Obtains number of columns, rows, and goal for mechanics functions
+    m.column_number = m.matrix_shape(lev3)[1]
+    m.row_number = m.matrix_shape(lev3)[0]
+    m.gpos = goal
 
     #BFS often takes time to get to the solution, so we can manually move the person closer to test BFS.
     print "\nBFS"
